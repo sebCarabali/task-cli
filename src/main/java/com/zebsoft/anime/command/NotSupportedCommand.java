@@ -1,4 +1,4 @@
-package com.zebsoft.anime;
+package com.zebsoft.anime.command;
 
 public class NotSupportedCommand implements Command {
 

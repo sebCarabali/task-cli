@@ -1,7 +1,7 @@
-package com.zebsoft.anime;
+package com.zebsoft.anime.parser;
 
+import com.zebsoft.anime.command.CommandArgsPair;
 import java.util.Arrays;
-import java.util.Map;
 
 public final class ArgParser {
 

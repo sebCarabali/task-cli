@@ -1,4 +1,4 @@
-package com.zebsoft.anime;
+package com.zebsoft.anime.command;
 
 public record CommandArgsPair(String[] args, String command) {
 
