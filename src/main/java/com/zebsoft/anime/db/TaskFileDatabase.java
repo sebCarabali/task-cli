@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface TaskFileDatabase {
   void add (Task task) throws IOException;
-  void update(Long id, Task updatedTask);
-  Optional<Task> find(Long id);
+  void update(Long id, Task updatedTask) throws IOException;
+  Optional<Task> find(Long id) throws IOException;
   List<Task> findAll() throws IOException;
   void delete(Long id) throws IOException;
 }
