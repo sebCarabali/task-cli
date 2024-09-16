@@ -11,5 +11,5 @@ public interface TaskFileDatabase {
   void update(Long id, Task updatedTask);
   Optional<Task> find(Long id);
   List<Task> findAll() throws IOException;
-  void delete(Long id);
+  void delete(Long id) throws IOException;
 }

@@ -12,7 +12,7 @@ public class DbUtil {
 
     private static final TaskFileDatabase fileDb = new JsonFileDatabase();
 
-    public static List<Task> findAll()  {
+    public static List<Task> findAll() {
         try {
             return fileDb.findAll();
         } catch (IOException e) {
@@ -23,6 +23,14 @@ public class DbUtil {
     public static void save(Task task) {
         try {
             fileDb.add(task);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void delete(Long id) {
+        try {
+            fileDb.delete(id);
         } catch (IOException e) {
             e.printStackTrace();
         }
