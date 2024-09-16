@@ -1,7 +1,6 @@
 package com.zebsoft.anime.db.json;
 
 import com.zebsoft.anime.model.Task;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zebsoft.anime.db.TaskFileDatabase;
@@ -40,13 +39,22 @@ public class JsonFileDatabase implements TaskFileDatabase {
   }
 
   @Override
-  public void update(Long id, Task updatedTask) {
-
+  public void update(Long id, Task updatedTask) throws IOException {
+    var tasks = findAll();
+    for(int i = 0; i < tasks.size(); i++) {
+      if(tasks.get(i).getId() == id) {
+        tasks.set(i, updatedTask);
+        saveAll(tasks);
+        return;
+      }
+    }
+    throw new IllegalArgumentException("Task with given id not found.");
   }
 
   @Override
-  public Optional<Task> find(Long id) {
-    return Optional.empty();
+  public Optional<Task> find(Long id) throws IOException {
+    var tasks = findAll();
+    return tasks.stream().filter(task -> task.getId() == id).findAny();
   }
 
   @Override
